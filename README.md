@@ -19,6 +19,15 @@ Créer les tables :
 Seed des tables users et ingredients:
 
     - symfony console doctrine:fixtures:load
+    - php bin/console --env=test doctrine:fixtures:load
+
+##BUILDER
+
+    - Execute ./build_app.sh in bash for git clone, make DB, make project and run 
+
+
+
+
 
 
 

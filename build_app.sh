@@ -31,7 +31,7 @@ sql
 composer update
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
-symfony console doctrine:fixtures:load
+php bin/console doctrine:fixtures:load
 php bin/console --env=test doctrine:database:create
 php bin/console --env=test doctrine:schema:create
 php bin/console --env=test doctrine:fixtures:load

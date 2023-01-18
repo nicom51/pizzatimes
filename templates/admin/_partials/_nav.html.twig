@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg shadow-lg" style="background-color: #ff413c;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/admin">Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/ingredient">Les ingrédients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/pizza">Les pizzas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/client">Voir l'espace public</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" me-auto mb-2 mb-lg-0>
+                <li class="nav-item">
+                    <p style="padding-bottom: 0.5rem;padding-top: 0.5rem;">
+                        {{ app.user.lastname }} {{ app.user.firstname }}
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -5,3 +5,11 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+app_admin:
+    path: /admin
+    controller: 'App\Controller\Admin\IndexController::index'
+
+app_client:
+    path: /client
+    controller: 'App\Controller\Client\IndexController::index'

@@ -1,0 +1,26 @@
+body {
+    background-image: url("/assets/img/bg-pizza.jpg");
+    background-color: peru;
+}
+
+.menu_pizza {
+    background-image: url("/assets/img/pizza-1.jpg");
+    background-color: peru;
+}
+.ingredients {
+    background-image: url("/assets/img/ingredients.jpg");
+    background-color: peru;
+}
+
+.menu_pizza > p > a {
+    background-color: #ff413c;
+}
+.ingredients > p > a {
+    background-color: #ff413c;
+}
+
+main.form-signin {
+    background: #fff;
+    border-radius: 30px;
+}
+

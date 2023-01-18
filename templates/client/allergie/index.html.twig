@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AllergieController!{% endblock %}
+
+{% block body %}
+
+    <h1>Allergies</h1>
+
+    <div class="container rounded-2 shadow-lg p-5" style="background-color:white;max-width: 450px;">
+        <div class="">
+            <h3>Choix des allergène</h3>
+            {{ include('client/allergie/_form.html.twig') }}
+
+            <a href="{{ path('app_client') }}" class="btn btn-success m-5" type="button">Retour</a>
+        </div>
+    </div>
+
+
+{% endblock %}

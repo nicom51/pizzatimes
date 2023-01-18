@@ -2,18 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}PIZZA TIME'S{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/brands.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/solid.css') }}">
 
+        <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
     </head>
-    <body>
+    <body class="text-center">
+        {% set current_path = app.request.get('_route') %}
+        {% if current_path != 'app_login' %}
+            {% if current_path matches '{^app_admin.*$}' %}
+                {% include "admin/_partials/_nav.html.twig" %}
+            {% elseif current_path matches '{^app_client.*$}' %}
+                {% include "client/_partials/_nav.html.twig" %}
+            {% endif %}
+        {% endif %}
         {% block body %}{% endblock %}
     </body>
 </html>

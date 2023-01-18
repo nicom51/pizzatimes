@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingredient index{% endblock %}
+
+{% block body %}
+    <h1>Ingredient index</h1>
+
+<div class="container rounded-2 shadow-lg" style="background-color: #ffad72">
+    <table class="table table-striped" style="background-color: #ffad72">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Créé le</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient.id }}</td>
+                <td>{{ ingredient.name }}</td>
+                <td>
+                    {% set totalPrice = ingredient.price / 100 %}
+                    {{ totalPrice|number_format(2) }}
+                </td>
+                <td>{{ ingredient.createdAt ? ingredient.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_ingredient_show', {'id': ingredient.id}) }}">Voir</a>
+                    <a href="{{ path('app_admin_ingredient_edit', {'id': ingredient.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">aucun ingrédient !</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_ingredient_new') }}" class="btn btn-danger m-5" type="button">Ajouter un ingrédient</a>
+</div>
+{% endblock %}

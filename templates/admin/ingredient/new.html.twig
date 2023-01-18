@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un ingredient{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un ingredient</h1>
+
+<div class="container rounded-2 shadow-lg" style="background-color: #ffad72">
+    {{ include('admin/ingredient/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_ingredient_index') }}" class="btn btn-success m-5" type="button">Retour à la liste</a>
+</div>
+{% endblock %}

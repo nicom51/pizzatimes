@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des pizzas{% endblock %}
+
+{% block body %}
+    <h1>Liste des pizzas</h1>
+
+    <div class="container rounded-2 shadow-lg" style="background-color: #ffad72">
+        <table class="table table-striped" style="background-color: #ffad72">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Créé le</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for pizza in pizzas %}
+                <tr>
+                    <td>{{ pizza.id }}</td>
+                    <td>{{ pizza.name }}</td>
+                    <td>{{ pizza.createdAt ? pizza.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>
+                        {% set totalPrice = 0 %}
+                        {% for ingredient in pizza.ingredients %}
+                            {% set totalPrice = totalPrice + ingredient.price %}
+                        {% endfor %}
+
+                        {% set totalPrice = totalPrice / 100 %}
+                        {{ totalPrice|number_format(2) }}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_pizza_show', {'id': pizza.id}) }}">Voir</a>
+                        <a href="{{ path('app_admin_pizza_edit', {'id': pizza.id}) }}">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune pizza :(</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_admin_pizza_new') }}" class="btn btn-danger m-5" type="button">Ajouter une pizza</a>
+    </div>
+
+{% endblock %}

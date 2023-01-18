@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/sign-in.css') }}">
+{% endblock %}
+
+{% block title %}Pizza time's{% endblock %}
+
+{% block body %}
+    {#<div style="position:fixed;border:0px;padding:0px;margin:-20px;top:75px;left:-50px; z-index: -10;">
+        <img src="{{ asset('assets/img/logo.png') }}" style="border:0px;padding:0px;margin:0px;background:transparent;transform: rotate(-45deg);">
+    </div>#}
+    <main class="form-signin w-100 m-auto" >
+        <form method="post">
+            <p>
+                <i class="fa-solid fa-pizza-slice fa-2xl" style="color:#dc3545"></i>
+            </p>
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Tu es connecté.e sous {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}"><br>Se déconnecter</a>
+                </div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
+
+            <div class="form-floating">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputEmail">Adresse mail</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                <label for="inputPassword">Mot de passe</label>
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me">Rester connecté(e) sur cet appareil
+                </label>
+            </div>
+            #}
+            <button class="btn btn-lg btn-primary" type="submit">
+                Se connecter
+            </button>
+        </form>
+    </main>
+{% endblock %}

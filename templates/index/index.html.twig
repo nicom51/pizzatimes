@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/sign-in.css') }}">
+{% endblock %}
+
+{% block title %}Pizza time's{% endblock %}
+
+{% block body %}
+    {#<div style="position:fixed;border:0px;padding:0px;margin:-20px;top:75px;left:-50px; z-index: -10;">
+        <img src="{{ asset('assets/img/logo.png') }}" style="border:0px;padding:0px;margin:0px;background:transparent;transform: rotate(-45deg);">
+    </div>#}
+    <main class="form-signin w-100 m-auto" >
+        <form>
+            <i class="fa-solid fa-pizza-slice fa-2xl" style="color:#dc3545"></i>
+            <h1 class="h3 mb-3 fw-normal">Se connecter</h1>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Adresse mail</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe">
+                <label for="floatingPassword">Mot de passe</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Rester connecté(e) sur cet appareil
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-danger" type="submit">Se connecter</button>
+        </form>
+    </main>
+{% endblock %}

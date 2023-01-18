@@ -18,7 +18,7 @@ Créer les tables :
 
 Seed des tables users et ingredients:
 
-    - symfony console doctrine:fixtures:load
+    - php bin/console doctrine:fixtures:load
     - php bin/console --env=test doctrine:fixtures:load
 
 ##BUILDER
